@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200&display=swap');
+
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+.dashboard .title-dashboard {
+    color: #718138 !important; 
+}
+
+.title-table-dashboard {
+    color: #718138 !important;
+    font-size: 22px !important;
+}
+
+.bg-customers {
+    background-color: #E28800 !important;
+}
+
+.bg-product {
+    background-color: #FFE600 !important;
+}
+
+.bg-menu {
+    background-color: #30CDFF !important;
+}
+
+.editDataProduk {
+    text-transform: uppercase;
+    color: #FFFF;
+    background-color: #718138;
+}
+
+.editDataProduk:hover {
+    background-color: #95a558 !important;
+    color: #FFFF !important;
+}
+
+.back_produk {
+    background-color: #718138;
+    color: #FFFF;
+    transition: .3s ease;
+}
+
+.editDataAdmin {
+    background-color: #718138;
+    color: #FFFF;
+    text-decoration: none;
+}
+
+.editDataAdmin:hover {
+    background-color: #95a558;
+    color: #FFFF;
+    text-decoration: none;
+}
+
+.back_produk:hover {
+    background-color: #95a558 !important;
+}
+
+.delete_confirm {
+    border: none; background-color: transparent;
+}
+
+.delete_confirm:hover {
+    text-decoration:underline;
+}
+
+@page {
+    size: A4;
+    margin: 0;
+}
+
+@media print {
+
+    html,
+    body {
+        width: 210mm;
+        /* height: 297mm; */
+    }
+
+    .table-report {
+        border: 2px solid #BABBC6;
+        border-collapse: separate;
+        border-radius: 5px;
+        border-spacing: 0px;
+        text-align: center !important;
+        color: #898A9F;
+    }
+
+    .table-report > thead > tr > th {
+        background-color: #BABBC6 !important;
+        color: #898A9F;
+        -webkit-print-color-adjust: exact;
+        border: none;
+    }
+
+    .table-report tbody tr:nth-of-type(odd) td {
+        -webkit-print-color-adjust: exact;
+        color: #898A9F;
+    }
+
+    .table-report tbody tr:nth-of-type(even) td {
+        background-color: #BABBC6 !important;
+        -webkit-print-color-adjust: exact;
+        color: #FFFF;
+    }
+
+    .table-report tbody tr:last-child td {
+        background-color: #D9D9D9 !important;
+        -webkit-print-color-adjust: exact;
+        color: #898A9F;
+        font-weight: 700;
+    }
+
+    .title_laporan {
+        font-family: 'Poppins', sans-serif !important;
+        color: #898A9F !important;
+    }
+}
