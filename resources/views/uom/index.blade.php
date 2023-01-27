@@ -42,8 +42,8 @@
                   @foreach ($uom as $item)
                   <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $item->nama_uom }}
-                    <td>{{ $item->deskripsi_uom }}
+                    <td>{{ $item->nama_uom }}</td>
+                    <td>{{ $item->deskripsi_uom }}</td>
                   </tr>
                   @endforeach
                 </tbody>

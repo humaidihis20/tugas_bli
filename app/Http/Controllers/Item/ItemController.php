@@ -41,7 +41,39 @@ class ItemController extends Controller
         // dd($ItemStore);
         Items::create($ItemStore);
 
-        return redirect()->route('items')->with(['success' => 'Data berhasil ditambahkan']);
+        return redirect()->route('items')->with(['success' => 'Data items berhasil ditambahkan']);
+    }
+
+    public function edit($id)
+    {
+        $uom_s = UoM::all();
+        $edit_items = Items::find($id);
+        return view('items.edit', [
+            'uom_s' => $uom_s,
+            'edit_items' => $edit_items,
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'uom_id' => 'required|integer',
+            'kode_item' => 'required',
+            'nama_item' => 'required',
+            'jenis_item' => 'required',
+            'quantity' => 'required|min:1|numeric|digits_between:1,5',
+            'harga_item' => 'required|numeric',
+        ]);
+
+        $edit_items = Items::find($id);
+        $edit_items->uom_id = $request->uom_id;
+        $edit_items->kode_item = $request->kode_item;
+        $edit_items->nama_item = $request->nama_item;
+        $edit_items->jenis_item = $request->jenis_item;
+        $edit_items->quantity = $request->quantity;
+        $edit_items->harga_item = $request->harga_item;
+        $edit_items->update();
+        return redirect()->route('items')->with(['status' => 'Data items berhasil di update']);
     }
 
     public function getinfo($id)

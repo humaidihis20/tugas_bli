@@ -21,6 +21,6 @@ class UoM extends Model
 
     public function purcase()
     {
-        return $this->hasMany(Purchase::class, 'id', 'id');
+        return $this->hasMany(Purchase::class, 'uoms_id', 'id');
     }
 }

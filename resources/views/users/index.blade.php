@@ -34,9 +34,9 @@
                   @foreach ($users as $user)
                   <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $user->name }}
-                    <td>{{ $user->email }}
-                    <td>{{ $user->role }}
+                    <td>{{ $user->name }}</td>
+                    <td>{{ $user->email }}</td>
+                    <td>{{ $user->role }}</td>
                   </tr>
                   @endforeach
                 </tbody>

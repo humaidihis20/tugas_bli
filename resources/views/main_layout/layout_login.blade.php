@@ -78,23 +78,8 @@
 </head>
 
   <body>
-
-    <div id="app">
-      <div class="main-wrapper">
-        <div class="navbar-bg"></div>
-          @yield('navbar')
-        <div class="main-sidebar sidebar-style-2">       
-            @yield('sidebar')     
-        </div>
-        <!-- Main Content -->
-        <div class="main-content">
-          @yield('content')
-        </div>
-        <footer class="main-footer">
-          @yield('footer')
-        </footer>
-      </div>
-    </div>
+    @yield('sidebar')
+    @yield('content')
     @yield('script')
   </body>
 </html>

@@ -52,7 +52,7 @@
                     <td>{{ $item->nama_item_id }}</td>
                     <td>{{ $item->sku }}</td>
                     <td>{{ $item->invoice }}</td>
-                    <td>{{ $item->harga_item }}</td>
+                    <td>Rp. {{ number_format((float)$item->harga_item, 0, '', '.') }}</td>
                     <td>{{ $item->quantity }}</td>
                     <td>Rp. {{ number_format((float)$item->total, 0, '', '.') }}</td>
                     <td>Rp. {{ number_format((float)$item->subtotal, 0, '', '.') }}</td>

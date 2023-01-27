@@ -74,6 +74,21 @@
                                 </div>                                          
                             </div>
 
+                            <div class="form-group row mb-4">
+                                <label for="uoms_id" class="col-form-label text-md-right col-12 col-md-3 col-lg-3">UoM</label>
+                                <div class="col-sm-12 col-md-7">
+                                    <select class="form-control select2 @error('uoms_id') is-invalid @enderror" id="uoms_id" name="uoms_id" value="{{ old('uoms_id') }}">
+                                        <option selected disabled>Pilih UoM (Unit Of Material)</option>
+                                        @foreach ($uoms as $item)
+                                        <option value="{{ $item->nama_uom }}" id="{{ $item->id }}">{{ $item->nama_uom }}</option>
+                                        @endforeach
+                                      </select>
+                                        @error('uoms_id')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                </div>
+                            </div>
+
                             <div class="form-group row mb-4 floating-addon">
                                 <div class="input-group mb-2">
                                   <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Tanggal</label>
@@ -90,16 +105,6 @@
                                   </div>
                                 </div>
                             </div>
-
-                            {{-- <div class="form-group row mb-4">
-                                <label for="id_quantity" class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Sisa Stock</label>
-                                <div class="col-sm-12 col-md-7">
-                                    <input type="text" class="form-control @error('id_quantity') is-invalid @enderror" placeholder="Sisa Stock" name="id_quantity" autocomplete="off" id="id_quantity" value="{{ old('id_quantity') }}" readonly>
-                                    @error('id_quantity')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div> --}}
 
                             <div class="form-group row mb-4">
                                 <label for="harga_item" class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Harga Item</label>

@@ -30,6 +30,8 @@ Route::get('/dashboard', [DashboardDashboardController::class, 'index'])->name('
 Route::get('/items', [ItemItemController::class, 'index'])->name('items');
 Route::get('/items/create', [ItemItemController::class, 'create'])->name('items.create');
 Route::post('/items/store', [ItemItemController::class, 'store'])->name('items.store');
+Route::get('/items/edit/{id}', [ItemItemController::class, 'edit'])->name('items.edit');
+Route::put('/items/update/{id}', [ItemItemController::class, 'update'])->name('items.update');
 Route::get('/items-delete/{id}', [ItemItemController::class, 'destroy']);
 Route::get('uom/{id}', [ItemItemController::class, 'getinfo']);
 

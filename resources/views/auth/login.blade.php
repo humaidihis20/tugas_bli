@@ -1,47 +1,83 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+@extends('main_layout.layout_login')
+@section('title', 'Login - BGI')
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+@section('content')
+<div id="app">
+  <section class="section">
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
+          <div class="card card-primary">
+            <div class="card-header"><h4>{{ __('Login') }}</h4></div>
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember">
-                <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
-            </label>
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
+            @if(Session::has('logout'))
+              <script>
+                swal('Success!!', 'Kamu Sudah Logout', 'info');
+              </script>
             @endif
 
-            <x-primary-button class="ml-3">
-                {{ __('Log in') }}
-            </x-primary-button>
+            <div class="col-lg-12 mx-auto">
+              @if (session()->has('success'))
+              <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+              </div>
+            @endif
+            </div>
+          
+            <div class="card-body">
+              <form method="post" action="{{ route('login') }}" class="needs-validation" novalidate="">
+                @csrf
+                  <div class="form-group">
+                  <label for="email">{{ __('E-Mail Address') }}</label>
+                  <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autofocus tabindex="1" autocomplete="off">
+                  @if (Session::has('alertemail'))
+                  <div class="text-danger">
+                    <small>{{ Session::get('alertemail') }}</small>
+                  </div>
+                  @endif
+                  @error('email')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                   @enderror                         
+                </div>
+
+                <div class="form-group">
+                  <div class="d-block">
+                    <label for="password" class="control-label">{{ __('Password') }}</label>
+                  </div>
+                  <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" tabindex="2">
+                  @if (Session::has('alertpass'))
+                  <div class="text-danger">
+                    <strong>{{ Session::get('alertpass') }}</strong>
+                  </div>
+                  @endif
+                  @error('password')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                  @enderror
+                </div>
+
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
+                    {{ __('Login') }}
+                  </button>
+                </div>
+              </form>
+
+            </div>
+          </div>
+          <div class="mt-5 text-muted text-center">
+            Don't have an account? <a href="{{ route('register') }} ">Create One</a>
+          </div>
+          <div class="simple-footer">
+            Copyright &copy; Tugas BLI
+            <?php echo date('Y') ?>
+          </div>
         </div>
-    </form>
-</x-guest-layout>
+      </div>
+    </div>
+  </section>
+</div>
+@endsection

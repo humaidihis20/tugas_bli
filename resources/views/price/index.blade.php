@@ -46,8 +46,6 @@
                     <td>{{ $item->nama_item_id }}</td>
                     <td>Rp. <div class="mata_uang" style="display:inline-table;">{{ $item->harga_sebelum_pajak }}</div></td>
                     <td>Rp. <div class="mata_uang" style="display:inline-table;">{{ $item->harga_sesudah_pajak }}</div></td>
-                    {{-- <td>Rp. {{ number_format((float)$item->harga_sebelum_pajak, 0, '', '.') }}</div></td>
-                    <td>Rp. {{ number_format((float)$item->harga_sesudah_pajak, 0, '', '.') }}</div></td> --}}
                   </tr>
                   @endforeach
                 </tbody>

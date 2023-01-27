@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Order;
 use App\Http\Controllers\Controller;
 use App\Models\Items;
 use App\Models\Purchase;
+use App\Models\UoM;
 use Illuminate\Http\Request;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 use sirajcse\UniqueIdGenerator\UniqueIdGenerator;
@@ -31,10 +32,12 @@ class PembelianController extends Controller
     public function create()
     {
         $items = Items::all();
+        $uoms = UoM::all();
         $id = UniqueIdGenerator::generate(['table' => 'purchases', 'field' => 'invoice', 'length' => 15, 'prefix' => 'INV/', 'suffix' => date('/m/Y')]);
         return view('shopping.order.create', [
             'items' => $items,
             'id' => $id,
+            'uoms' => $uoms,
         ]);
     }
 
@@ -47,6 +50,7 @@ class PembelianController extends Controller
     public function store(Request $request)
     {
         $purchaseStore = $request->validate([
+            'uoms_id' => 'required',
             'id_quantity' => 'required',
             'tanggal' => 'required',
             'nama_item_id' => 'required',
@@ -61,7 +65,6 @@ class PembelianController extends Controller
         Purchase::create($purchaseStore);
         $updateQty = Items::findOrFail($request->id_quantity);
         $updateQty->quantity -= $request->quantity;
-        // dd($updateQty);
         $updateQty->update();
 
         return redirect()->route('purchase')->with(['success' => 'Order berhasil ditambahkan']);

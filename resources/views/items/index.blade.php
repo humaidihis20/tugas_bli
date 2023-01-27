@@ -49,6 +49,8 @@
                     <td>{{ $item->kode_item }}</td>
                     <td>{{ $item->nama_item }}
                       <div class="table-links">
+                        <a href="{{ route('items.edit', $item->id) }}"><i class="fas fa-edit"></i> Edit</a>
+                        <div class="bullet"></div>
                         <a href="javascript:void(0)" id="deleteitems" class="text-danger deleteitems" data-id="{{ url('items-delete/'.$item->id) }}" data-toggle="tooltip"><i class="fas fa-trash-alt"></i> Hapus</a>
                       </div>
                     </td>

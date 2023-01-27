@@ -68,7 +68,7 @@
                     <td>{{ date('d-m-Y', strtotime($item->tanggal)) }}</td>
                     <td>{{ $item->nama_item_id }}</td>
                     <td>{{ $item->quantity }}</td>
-                    <td>{{ $item->price->nama_uom }}</td>
+                    <td>{{ $item->uoms_id }}</td>
                     <td>Rp. {{ number_format((float)$item->price->harga_sebelum_pajak, 0, '', '.') }}</td>
                     <td>Rp. {{ number_format((float)$item->price->harga_sesudah_pajak, 0, '', '.') }}</td> 
                   </tr>

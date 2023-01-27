@@ -13,6 +13,7 @@ class Purchase extends Model
 
     protected $fillable = [
         'id_quantity',
+        'uoms_id',
         'tanggal',
         'nama_item_id',
         'sku',

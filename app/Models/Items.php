@@ -55,6 +55,6 @@ class Items extends Model
 
     public function purchase_uoms()
     {
-        return $this->hasMany(Purchase::class, 'uom_id', 'id');
+        return $this->hasMany(Purchase::class, 'uoms_id', 'id');
     }
 }
