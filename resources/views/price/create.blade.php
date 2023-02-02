@@ -61,7 +61,7 @@
                                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
                                 <div class="col-sm-12 col-md-7">
                                 <input class="btn btn-primary" type="submit" value="Simpan">
-                                <a href="{{ route('purchase') }}" class="btn btn-danger">Kembali</a>
+                                <a href="{{ route('price') }}" class="btn btn-danger">Kembali</a>
                                 <button class="btn btn-warning" type="reset">Cancel</button>
                                 </div>
                             </div>

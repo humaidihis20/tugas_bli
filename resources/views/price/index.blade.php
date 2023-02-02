@@ -36,7 +36,7 @@
                     <th>No.</th>
                     <th>Nama Item</th>
                     <th>Harga Sebelum Pajak</th>
-                    <th>Harga Sebelum Pajak</th>
+                    <th>Harga Setelah Pajak</th>
                   </tr>
                 </thead>
                 <tbody>
